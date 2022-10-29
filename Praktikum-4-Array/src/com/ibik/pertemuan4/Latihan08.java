@@ -1,36 +1,37 @@
 package com.ibik.pertemuan4;
 import javax.swing.JOptionPane;
-public class Latihan08 {
-	public static void main(String[] args) {
-			
-			int baris =3;
-			int kolom =3;
-			
 
-			String out = "";
-			String field[] = {"Nama Lengkap: ", "Alamat: ", "No Telp: "};
-			String isi[]= {"","",""};
-			String isi1[]= {"","",""};
-			String isi2[]= {"","",""};
+public class Latihan08 {
+
+		public static void main(String[] args) {
+			int baris = 3, kolom = 4;
+			int hasil = 0, m = 1, e = 2;
+			String output = "";
+			String input[][] = new String[baris][kolom];
+			input[0][0] = "Nama Lengkap: ";
+			input[1][0] = "Alamat: ";
+			input[2][0] = "No Telp: ";
 			
-			for (int i = 0; i < field.length; i++) {
-				String in =  JOptionPane.showInputDialog(null, field[i], "Data array ke-1", JOptionPane.QUESTION_MESSAGE);
-				isi[i] = in + " ";
-				out += isi[i];
+			//INPUT & OUTPUT
+			for(int i = 0; i < baris; i++) {
+				output += input[i][0];
+				for(int j = m; j < e; j++) {
+					input[i][j] = JOptionPane.showInputDialog(null, input[i][0], "Data Array ke-[" + i + "]" + "[" + j + "]", JOptionPane.QUESTION_MESSAGE);				
+					output += input[i][j] + "\n";
+				}
+				//restart loop
+				if (i == baris - 1) {
+					output += "\n";
+					i = -1;
+					m = m+1;
+					e = e+1;
+				        hasil = hasil+1;
+					if (hasil == 3) {
+						i = baris;
+					}
+				}
 			}
-			for (int i = 0; i < field.length; i++) {
-				String in =  JOptionPane.showInputDialog(null, field[i], "Data array ke-2", JOptionPane.QUESTION_MESSAGE);
-				isi1[i] = "\n" + in + " ";
-				out += isi1[i];
-			}
-			for (int i = 0; i < field.length; i++) {
-				String in =  JOptionPane.showInputDialog(null, field[i], "Data array ke-3", JOptionPane.QUESTION_MESSAGE);
-				isi2[i] = in + " ";
-				out += isi2[i];
-			}
-		
-			JOptionPane.showMessageDialog(null, out , "Output Array", JOptionPane.INFORMATION_MESSAGE);
-			
+
+			JOptionPane.showMessageDialog(null, output);
 		}
 	}
-
